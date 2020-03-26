@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
+	<title>litto @ work</title>
+	<link rel="stylesheet" type="text/css" href="/main.css">
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
     <!-- we import arjs version without NFT but with marker + location based support -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -33,22 +35,26 @@
 
 	</script>
     <body style="margin : 0px; overflow: hidden;">
-        <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
-	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
-	   			<a-entity
-	   			id="deathSphere"
-	   			material="opacity: 1"
-	            position="0 0 0.5"
-	            scale="0.2 0.2 0.2"
-	            gltf-model="assets/shere_map2.gltf"; 
-	            side: double; 
-	            depthTest: false>
-	            	   <a-animation attribute="material.opacity" begin="2000" to="0"></a-animation> 
-                 </a-entity>
-			</a-marker>
+        
+	<div id="figure">
+	 	<p>Litto is alive</p>
+	</div>
+    <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
+        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
+   			<a-entity
+   			id="deathSphere"
+   			material="opacity: 1"
+            position="0 0 0.5"
+            scale="0.2 0.2 0.2"
+            gltf-model="assets/shere_map2.gltf"; 
+            side: double; 
+            depthTest: false>
+            	   <a-animation attribute="material.opacity" begin="2000" to="0"></a-animation> 
+             </a-entity>
+		</a-marker>
 
-        	<a-entity camera></a-entity>
-        </a-scene>
+    	<a-entity camera></a-entity>
+    </a-scene>
     </body>
 </html>
 
