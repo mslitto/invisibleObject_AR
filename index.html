@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <title>AugmentedReality aFrame.js Litto</title>
+
 	    <style>
 			@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet');
 
@@ -14,9 +15,8 @@
 			  margin: 10px 10px;
 			  background: transparent;
 			  font-family: 'Ubuntu', sans-serif;
-			  position: absolute;
+			  position: fixed;
 			  margin: 0 10px 10px 0;
-			  z-index: 1000;
 			}
 
 		</style>
@@ -55,7 +55,6 @@
 
 	</head>
     <body style="margin : 0px; overflow: hidden;">
-    	
 
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
@@ -67,9 +66,10 @@
 	            gltf-model="assets/shere_map2.gltf"; 
 	            side: double; 
 	            depthTest: false>
-	            	   <a-animation attribute="material.opacity" begin="1000" to="0"></a-animation> 
+	            	   <a-animation attribute="material.opacity" begin="2000" to="0"></a-animation> 
                  </a-entity>
 			</a-marker>
+
         	<a-entity camera></a-entity>
         </a-scene>
 
