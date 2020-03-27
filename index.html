@@ -15,7 +15,7 @@
 			  margin: 10px 10px;
 			  background: transparent;
 			  font-family: 'Ubuntu', sans-serif;
-			  position: fixed;
+			  position: absolute;
 			  margin: 0 10px 10px 0;
 			  z-index: 1000;
 			}
@@ -57,27 +57,27 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
     	
+    	<div style="position: relative;">
+	        <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
+		        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
+		   			<a-entity
+		   			id="deathSphere"
+		   			material="opacity: 1"
+		            position="0 0 0.5"
+		            scale="0.2 0.2 0.2"
+		            gltf-model="assets/shere_map2.gltf"; 
+		            side: double; 
+		            depthTest: false>
+		            	   <a-animation attribute="material.opacity" begin="2000" to="0"></a-animation> 
+	                 </a-entity>
+				</a-marker>
 
-        <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
-	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
-	   			<a-entity
-	   			id="deathSphere"
-	   			material="opacity: 1"
-	            position="0 0 0.5"
-	            scale="0.2 0.2 0.2"
-	            gltf-model="assets/shere_map2.gltf"; 
-	            side: double; 
-	            depthTest: false>
-	            	   <a-animation attribute="material.opacity" begin="2000" to="0"></a-animation> 
-                 </a-entity>
-			</a-marker>
-
-        	<a-entity camera></a-entity>
-        </a-scene>
-
-        <div id="figure">
+	        	<a-entity camera></a-entity>
+	        </a-scene>
+    </div>
+    <div id="figure">
     		<p>Litto is alive</p>
-  		</div>
+  	</div>
 
     </body>
 </html>
