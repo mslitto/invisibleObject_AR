@@ -32,23 +32,19 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
 
-	  <a-scene environment="preset: checkerboard">
-	      <!-- Player -->
-	      <a-entity id="rig" movement-controls position="0 0 5">
-	        <a-entity id="camera"
-	                  camera
-	                  position="0 1.6 0"
-	                  look-controls="pointerLockEnabled: true"></a-entity>
-	      </a-entity>
+        <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
+        	<a-assets>
+        		<img id="image" src="deathSphere.png">
+        	</a-assets>
+	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
+				<a-entity position="0 1 0"
+                animation-mixer="clip: *;"
+                gltf-model="src: url(https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/AnimatedMorphSphere/glTF/AnimatedMorphSphere.gltf);">
+      			</a-entity>
+			</a-marker>
 
-	      <!-- Animation
-	           See: http://threejs.org/examples/#webgl_animation_scene
-	      -->
-	      <a-entity position="0 1 0"
-	                animation-mixer="clip: *;"
-	                gltf-model="src: url(https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/AnimatedMorphSphere/glTF/AnimatedMorphSphere.gltf);">
-	      </a-entity>
-	    </a-scene>
+        	<a-entity camera></a-entity>
+        </a-scene>
 
         <div id="figure"></div>
         <script src="js/scrape.js"></script>
