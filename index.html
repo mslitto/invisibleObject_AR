@@ -35,10 +35,10 @@
 
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
 			<a-assets>
-	        	<a-asset-item id="bird" response-type="arraybuffer" src="https://cdn.glitch.com/1061d524-9d0f-4b25-97fd-48ebd0fce63c%2Fsceneglb.glb?1546534633849"></a-asset-item>
+	        	<a-asset-item id="deathSphere" response-type="arraybuffer" src="assets/shere_map2.gltf"></a-asset-item>
 	      	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
-	   			<a-entity gltf-model="#bird" scale="0.01 0.01 0.01" animation-mixer="clip:Take 001; loop:2; timeScale: 5; crossFadeDuration: 1"></a-entity>
+	   			<a-entity gltf-model="#deathSphere" scale="0.01 0.01 0.01" animation-mixer="clip:scale; loop:2; timeScale: 5; crossFadeDuration: 1"></a-entity>
 
 			</a-marker>
 
