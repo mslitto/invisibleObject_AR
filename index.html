@@ -35,7 +35,7 @@
 
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
 			<a-assets>
-	        	<a-asset-item id="shpere_d" response-type="arraybuffer" src="assets/shpere.anim.gltf"></a-asset-item>
+	        	<a-asset-item id="shpere_d" response-type="arraybuffer" src="assets/shpere_anim.gltf"></a-asset-item>
 	      	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 	   			<a-entity gltf-model="#sphere_d" scale="0.1 0.1 0.1" animation-mixer="clip:scale; loop:2; timeScale: 5; crossFadeDuration: 1"></a-entity>
