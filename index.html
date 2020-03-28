@@ -24,8 +24,8 @@
 
 		</style>
 	    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-	    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	    <!-- we import arjs version without NFT but with marker + location based support -->
+	    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 
 
@@ -35,11 +35,10 @@
 
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
 			<a-assets>
-	        	<a-asset-item id="deathSphere" response-type="arraybuffer" src="ttps://cdn.glitch.com/1061d524-9d0f-4b25-97fd-48ebd0fce63c%2Fsceneglb.glb?1546534633849"></a-asset-item>
+	        	<a-asset-item id="bird" response-type="arraybuffer" src="https://cdn.glitch.com/1061d524-9d0f-4b25-97fd-48ebd0fce63c%2Fsceneglb.glb?1546534633849"></a-asset-item>
 	      	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 	   			<a-entity gltf-model="#bird" scale="0.01 0.01 0.01" animation-mixer="clip:Take 001; loop:2; timeScale: 5; crossFadeDuration: 1"></a-entity>
-
 
 			</a-marker>
 
