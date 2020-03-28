@@ -32,19 +32,19 @@
     <body style="margin : 0px; overflow: hidden;">
 
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
+        	<a-assets>
+        		<img id="deathSphere" src="deathSphere.png">
+        	</a-assets>
+
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
-	   			<a-entity
-	   			id="deathSphere"
-	   			material="opacity: 1"
-	            position="0 0 0.5"
-	            scale="0.1 0.1 0.1"
-	            gltf-model="assets/shere_map2.gltf"; 
-	            side: double; 
+	   			<a-sphere
+	   			src="#deathSphere"
+	   			position="0 0 0.5"
+	            side: double 
 	            depthTest: false>
 	            	<a-animation attribute="rotation" dur="5000" to="0 360 0" repeat="indefinite" easing="linear">
-	            	   	
 	            	</a-animation> 
-                 </a-entity>
+                 </a-sphere>
 			</a-marker>
 
         	<a-entity camera></a-entity>
