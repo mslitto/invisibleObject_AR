@@ -47,6 +47,7 @@
 	        		src="assets/shpere_anim.gltf"></a-asset-item>
 	        	<a-asset-item 
               		id="death_morh"
+              		response-type="arraybuffer" 
               		src="assets/shpere_morph.gltf">
           		</a-asset-item>
 	      	</a-assets>
@@ -60,7 +61,7 @@
 			    gltf-model="#death_morh"
 			    scale="0.2 0.2 0.2"
 			    gltf-morph="morphtarget:death_M1;value:0"
-			    animation-mixer="clip:death_M1; timeScale: 0.5;"></a-entity>
+			    animation-mixer="clip:gltf-morph timeScale: 0.5;"></a-entity>
 			</a-marker>
 
         	<a-entity camera></a-entity>
