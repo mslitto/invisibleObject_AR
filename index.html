@@ -26,6 +26,9 @@
 	    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	    <!-- we import arjs version without NFT but with marker + location based support -->
 	    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+	    <!-- shape key modifyer -->
+	    <script src="https://rawcdn.githack.com/elbobo/aframe-gltf-morph-component/07e9b80bd382cc1c19223468d35c453e7c76e9a2/dist/aframe-gltf-morph-component.js"></script>
+
     	<!--to animate gltf files see also: https://aframe.io/docs/1.0.0/components/gltf-model.html-->
     	<script src="https://raw.githubusercontent.com/donmccurdy/aframe-extras/master/src/loaders/animation-mixer.js" ></script>
 
@@ -38,21 +41,26 @@
 
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
 			<a-assets>
-	        	<a-asset-item id="sphere_d" response-type="arraybuffer" src="assets/shpere_anim.gltf"></a-asset-item>
+	        	<a-asset-item 
+	        		id="sphere_d" 
+	        		response-type="arraybuffer" 
+	        		src="assets/shpere_anim.gltf"></a-asset-item>
+	        	<a-asset-item 
+              		id="death_morh"
+              		response-type="arraybuffer" 
+              		src="assets/shpere_morph.gltf">
+          		</a-asset-item>
 	      	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
-	   			<a-entity gltf-model="#sphere_d" scale="0.1 0.1 0.1" animation-mixer="clip:scale.002; timeScale: 0.5;"></a-entity>
+	   			<a-entity 
+	   			gltf-model="#sphere_d" 
+	   			scale="0.1 0.1 0.1" 
+	   			animation-mixer="clip:scale.002; timeScale: 0.5;"></a-entity>
 
-	   			<a-sphere
-	   			src="#deathSphere"
-	   			position="0 0 0.5"
-	   			scale="0.1 0.1 0.01"
-	            side: double 
-	            depthTest: false>
-	            	<a-animation attribute="rotation" dur="5000" to="0 360 0" repeat="indefinite" easing="linear">
-	            	</a-animation> 
-                </a-sphere>
-
+	   			<a-entity 
+			    gltf-model="#death_morh"
+			    gltf-morph="morphtarget:death_M1;value:0"
+			    animation="property:gltf-morph.value;from:0;to:1.00"></a-entity>
 
 			</a-marker>
 
