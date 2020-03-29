@@ -60,8 +60,10 @@
 	   			<a-entity 
 			    gltf-model="#death_morph"
 			    scale="0.2 0.2 0.2"
-			    gltf-morph="morphtarget:death_M1;value:0"
-			    animation-mixer="clip:death_M1;from:0;to:0.75"></a-entity>
+
+        		gltf-morph="morphtarget:death_M1;value:0"
+			    animation="property:gltf-morph.value;from:0;to:0.75">	
+			    </a-entity>
 			</a-marker>
 
         	<a-entity camera></a-entity>
