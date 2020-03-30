@@ -33,8 +33,20 @@
     	<script src="https://raw.githubusercontent.com/donmccurdy/aframe-extras/master/src/loaders/animation-mixer.js" ></script>
 
     	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-    	<!--for older versions of gltf files 
-    	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>--> 
+    	<!--for older versions of gltf files --> 
+    	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>
+    	<script> 
+    		// Registering component in foo-component.js
+			AFRAME.registerComponent('foo', {
+			  schema: {},
+			  init: function () {},
+			  update: function () {},
+			  tick: function () {},
+			  remove: function () {},
+			  pause: function () {},
+			  play: function () {}
+			});
+		</script>
 
 	</head>
     <body style="margin : 0px; overflow: hidden;">
@@ -53,7 +65,7 @@
 			    gltf-model="#death_morph"
 			    scale="0.5 0.5 0.5"
 			    gltf-morph__d="morphtarget:death_M1;value:0"
-			    animation="property:gltf-morph__d.value;from:0;to:0.75; dur: 3000">	
+			    animation="property:gltf-morph__d.value;from:0;to:0.75; dur: 3000; loop: true">	
 			    </a-entity>
 			</a-marker>
 
