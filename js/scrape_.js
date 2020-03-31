@@ -63,22 +63,7 @@ const load = async () => {
   } catch(e) {
     document.body.innerHTML = e
   }
-  const defaultValue = -1;
-  const deathRatio = (totals_.confirmed_ / totals_.deaths_);
-  const deathBattle = ((totals_.recovered_ / totals_.confirmed_) - (totals_.deaths_/ totals_.confirmed_));
-  const sickatHome = (totals_.confirmed_ - totals_.deaths_ - totals_.recovered_);
-  
-  //scale sphere add EventListener
-  if (deathBattle < defaultValue) {
-      console.log(1);
-  } else {
-      console.log(0);
-  }
-  
 
-  
-  figure.innerHTML = "confirmed " + totals_.confirmed_ + "<br>" + "death " + totals_.deaths_ + "<br>" + "recovered "  + totals_.recovered_ + "<br>" + "sickatHome " + sickatHome +  "<br>" + deathBattle;
-}
 
 
 
