@@ -58,18 +58,14 @@
               		response-type="arraybuffer" 
               		src="assets/shpere_morph.gltf">
           		</a-asset-item>
-          		<a-asset-item id="shpere_d" response-type="arraybuffer" src="assets/shpere_anim.gltf"></a-asset-item>
+          			<img id="sphere-d" src="assets/earth-sphere.jpg" />
+          		</a-asset-item>
 	      	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
-
-	   			<a-entity 
-			    gltf-model="#death_morph"
-			    scale="0.5 0.5 0.5"
-			    gltf-morph__d="morphtarget:death_M1;value:0"
-			    animation="property:gltf-morph__d.value;from:0;to:0.75; dur: 3000; loop: true">	
-			    </a-entity>
-
-			    <a-entity gltf-model="#sphere_d" scale="0.1 0.1 0.1" animation-mixer="clip:scale.002; loop:2; timeScale: 5; crossFadeDuration: 1"></a-entity>
+	        <a-sphere position="0 0.5 0" 
+	               material="src: #sphere_d; transparent: true; opacity: 0.95;"
+	               animation__rotate = "property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;">
+	        </a-sphere>
 
 			</a-marker>
 
