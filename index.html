@@ -35,41 +35,17 @@
     	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     	<!--for older versions of gltf files --> 
     	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>
-    	<script src="js/scrape.js"></script>
-
     	<script> 
-			 AFRAME.registerComponent('material-displacement', {
-			  /**
-			   * Creates a new THREE.ShaderMaterial using the two shaders defined
-			   * in vertex.glsl and fragment.glsl.
-			   */
-			  init: function () {
-			    this.material  = new THREE.ShaderMaterial({
-			      uniforms: {time: { value: 0.0 }},
-			      vertexShader,
-			      fragmentShader
-			    });
-			    this.el.addEventListener('model-loaded', () => this.update());
-			  },
-
-			  /**
-			   * Apply the material to the current entity.
-			   */
-			  update: function () {
-			    const mesh = this.el.getObject3D('mesh');
-			    if (mesh) {
-			      mesh.material = this.material;
-			    }
-			  },
-
-			  /**
-			   * On each frame, update the 'time' uniform in the shaders.
-			   */
-			  tick: function (t) {
-			    this.material.uniforms.time.value = t / 1000;
-			  }
-			  
-			})
+    		// Registering component in foo-component.js
+			AFRAME.registerComponent('foo', {
+			  schema: {},
+			  init: function () {},
+			  update: function () {},
+			  tick: function () {},
+			  remove: function () {},
+			  pause: function () {},
+			  play: function () {}
+			});
 		</script>
 
 	</head>
@@ -82,13 +58,13 @@
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 
 		        <a-sphere 
-		        material-displacement
-		        radius: 0.2
+		        radius: 0.5
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
 		        displacement-map="#deathSphere"
-		        animation__rotate="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
-		        animation__scale="property: scale; direction:alternate-reverse; dur:5000; from:1 1 1; to:4 4 4: loop: true;"
+		        displacement-bias="0"
+        		displacement-scale="60"
+		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
 		        ></a-sphere>
 
 		        <a-sphere 
@@ -97,7 +73,6 @@
 		        scale="0.5 0.5 0.5"
 		        position="0 0 0.5"
 		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 -360 0; loop: true;"
-
 		        ></a-sphere>
 
 			</a-marker>
@@ -106,6 +81,7 @@
         </a-scene>
 
         <div id="figure"></div>
+        <script src="js/scrape.js"></script>
 
 
     </body>

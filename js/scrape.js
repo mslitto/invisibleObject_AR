@@ -1,5 +1,3 @@
-
-//get figures from latest data
 const split = b => {
   const matches = b.match(/(\s*"[^"]+"\s*|\s*[^,]+|,)(?=,|$)/g);
   if (!matches) {
@@ -32,8 +30,6 @@ const load = async () => {
     }
     
     const url = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${month}-${day}-2020.csv`
-    const _url = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${month}-${day -1}-2020.csv`
-
     console.log({url})
     const response = await fetch(url)
 
@@ -87,6 +83,3 @@ const load = async () => {
 
 
 load()
-
-
-
