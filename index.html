@@ -36,30 +36,19 @@
     	<!--for older versions of gltf files --> 
     	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>
     	<script> 
-    		// Registering component in foo-component.js
-			AFRAME.registerComponent('change-displacement', {
-			  schema: {
-			  	displacement-scale: {default: 0}
-			  },
-			  init: function () {
-			  	var data = this.data;
-			  	var el = this.el;
-			  	var defaultDis = el.getAttribute.displacement-scale;
-			  	
-			  	el.addEventListener('mouseenter', function() {
-			  		el.setAttribute('displacement-scale', data.displacement-scale);
-			  	});
+			  AFRAME.registerComponent('scale-on-mouseenter', {
+			    schema: {
+			      to: {default: '2.5 2.5 2.5', type: 'vec3'}
+			    },
 
-			  	el.addEventListener('mouseleave', function() {
-			  		el.setAttribute('displacement-scale', defaultDis);
-			  	});
-			  }
-			  //update: function () {},
-			  //tick: function () {},
-			  //remove: function () {},
-			  //pause: function () {},
-			  //play: function () {}
-			});
+			    init: function () {
+			      var data = this.data;
+			      var el = this.el;
+			      this.el.addEventListener('mouseenter', function () {
+			        el.object3D.scale.copy(data.to);
+			      });
+			    }
+			  });
 		</script>
 
 	</head>
@@ -73,6 +62,7 @@
 
 		        <a-sphere change-displacement
 		        radius: 0.5
+		        scale='2 2 2'
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
 		        displacement-map="#deathSphere"
