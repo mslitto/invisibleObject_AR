@@ -60,18 +60,18 @@
         	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 
-		        <a-sphere scale-on-mouseenter
+		        <a-sphere 
 		        radius: 0.5
 		        scale='2 2 2'
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
 		        displacement-map="#deathSphere"
 		        displacement-bias="0"
-        		displacement-scale="60"
+        		displacement-scale="20"
 		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
 		        ></a-sphere>
 
-		        <a-sphere 
+		        <a-sphere scale-on-mouseenter
 		        radius: 0.5
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        scale="0.5 0.5 0.5"
