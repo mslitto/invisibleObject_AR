@@ -37,14 +37,28 @@
     	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>
     	<script> 
     		// Registering component in foo-component.js
-			AFRAME.registerComponent('foo', {
-			  schema: {},
-			  init: function () {},
-			  update: function () {},
-			  tick: function () {},
-			  remove: function () {},
-			  pause: function () {},
-			  play: function () {}
+			AFRAME.registerComponent('change-displacement', {
+			  schema: {
+			  	displacement-scale: {default: 30}
+			  },
+			  init: function () {
+			  	var data = this.data;
+			  	var el = this.el;
+			  	var defaultDis = el.getAttribute.displacement-scale;
+			  	
+			  	el.addEventListener('mouseenter', function() {
+			  		el.setAttribute('displacement-scale', data.displacement-scale);
+			  	});
+
+			  	el.addEventListener('mouseleave', function() {
+			  		el.setAttribute('displacement-scale', defaultDis);
+			  	});
+			  }
+			  //update: function () {},
+			  //tick: function () {},
+			  //remove: function () {},
+			  //pause: function () {},
+			  //play: function () {}
 			});
 		</script>
 
@@ -57,7 +71,7 @@
         	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 
-		        <a-sphere 
+		        <a-sphere change-displacement
 		        radius: 0.5
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
