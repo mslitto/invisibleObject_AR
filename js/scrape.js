@@ -243,7 +243,8 @@ float turbulence( vec3 p ) {
 void main() {
   float time = timeMsec / 1000.0; // Convert from A-Frame milliseconds to typical time in seconds.
   noise = 10.0 *  -.10 * turbulence( .5 * normal + time / 3.0 );
-  float b = 5.0 * pnoise3( 0.05 * position, vec3( 100.0 ) );
+  //                        0.05
+  float b = 5.0 * pnoise3( 0.02 * position, vec3( 100.0 ) );
   float displacement = (- 10. * noise + b) / 50.0;
 
   vec3 newPosition = position + normal * displacement + myOffset;
