@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	    <title>I'm alive</title>
+	    <title>Im alive</title>
 
 	    <style>
 			@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet');
@@ -29,12 +29,14 @@
 	    <!-- shape key modifyer -->
 	    <script src="https://rawcdn.githack.com/elbobo/aframe-gltf-morph-component/07e9b80bd382cc1c19223468d35c453e7c76e9a2/dist/aframe-gltf-morph-component.js"></script>
 
-    	<!--to animate gltf files see also: https://aframe.io/docs/1.0.0/components/gltf-model.html-->
-    	<script src="https://raw.githubusercontent.com/donmccurdy/aframe-extras/master/src/loaders/animation-mixer.js" ></script>
+    	<!--to animate gltf files see also: https://aframe.io/docs/1.0.0/components/gltf-model.html
+    	<script src="https://raw.githubusercontent.com/donmccurdy/aframe-extras/master/src/loaders/animation-mixer.js" ></script>-->
 
     	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    	
     	<!--for older versions of gltf files --> 
     	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>
+    	
     	<!-- webscrape corona and glsl shaders -->
     	<script src="js/scrape.js"></script>
 
@@ -58,14 +60,15 @@
 		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
 		        ></a-sphere>
 
-		        <a-sphere material="shader:displacement-offset"
+		        <a-sphere 
+		        material="shader:displacement-offset"
                 myoffset-updater
                 scale="1 1 1"
                 radius="0.2"
                 position="0 1.5 -2"
                 segments-height="128"
                 segments-width="128"
-                animation="property: scale; direction: alternate-reverse; dur: 5000; from: 1 1 1 to: 4 4 4; repeat: indefinite"></a-sphere>
+                animation="property: scale; direction: alternate-reverse; dur: 5000; from: 1 1 1; to: 4 4 4; repeat: indefinite"></a-sphere>
 
 		        <a-sphere scale-on-mouseenter
 		        radius: 0.5
