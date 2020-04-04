@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	    <title>AugmentedReality aFrame.js Litto</title>
+	    <title>I'm alive</title>
 
 	    <style>
 			@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet');
@@ -21,8 +21,8 @@
 			  margin: 0 10px 10px 0;
 			  z-index: 1000;
 			}
+		</style>
 
-			</style>
 	    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	    <!-- we import arjs version without NFT but with marker + location based support -->
 	    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -35,21 +35,8 @@
     	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     	<!--for older versions of gltf files --> 
     	<script src="https://github.com/donmccurdy/aframe-extras/blob/master/src/loaders/gltf-model-legacy.js"></script>
-    	<script> 
-			  AFRAME.registerComponent('scale-on-mouseenter', {
-			    schema: {
-			      to: {default: '2.5 2.5 2.5', type: 'vec3'}
-			    },
-
-			    init: function () {
-			      var data = this.data;
-			      var el = this.el;
-			      this.el.addEventListener('click', function () {
-			        el.object3D.scale.copy(data.to);
-			      });
-			    }
-			  });
-		</script>
+    	<!-- webscrape corona and glsl shaders -->
+    	<script src="js/scrape.js"></script>
 
 	</head>
     <body style="margin : 0px; overflow: hidden;">
@@ -71,6 +58,15 @@
 		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
 		        ></a-sphere>
 
+		        <a-sphere material="shader:displacement-offset"
+                myoffset-updater
+                scale="1 1 1"
+                radius="0.2"
+                position="0 1.5 -2"
+                segments-height="128"
+                segments-width="128"
+                animation="property: scale; direction: alternate-reverse; dur: 5000; from: 1 1 1 to: 4 4 4; repeat: indefinite"></a-sphere>
+
 		        <a-sphere scale-on-mouseenter
 		        radius: 0.5
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
@@ -85,7 +81,6 @@
         </a-scene>
 
         <div id="figure"></div>
-        <script src="js/scrape.js"></script>
 
 
     </body>
