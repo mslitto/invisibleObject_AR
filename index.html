@@ -53,7 +53,9 @@
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 
 		        <a-sphere 
-		        scale='0.1 0.1 0.1'
+		        scale='0.2 0.2 0.2'
+		        segments-height="128"
+                segments-width="128"
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
 		        displacement-map="#deathSphere"
@@ -64,13 +66,12 @@
 
 		        <a-sphere 
 		        material="src: #360video"
-                myoffset-updater
+		        segments-height="128"
+                segments-width="128"
                 scale="1 1 1"
                 radius="0.2"
                 position="0 0 0.5"
-                segments-height="128"
-                segments-width="128"
-                animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 -360 0; loop: true;"></a-sphere>
+                animation="property: rotation; dur: 10000; easing: linear; dir: normal; from:0 0 0; to: 0 -360 0; loop: true;"></a-sphere>
 
 			</a-marker>
 
