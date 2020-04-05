@@ -54,26 +54,26 @@
 
 		        <a-sphere 
 		        radius: 0.5
-		        scale='1.5 1.5 1.5'
+		        scale='0.5 0.5 0.5'
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
 		        displacement-map="#deathSphere"
 		        displacement-bias="0"
-        		displacement-scale="20"
+        		displacement-scale="10"
 		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
 		        ></a-sphere>
 
 		        <a-sphere 
 		        material="src: #360video; transparent: true"
                 myoffset-updater
-                scale="1 1 1"
+                scale="0.4 0.4 0.4"
                 radius="0.2"
                 position="0 0 0.5"
                 segments-height="128"
                 segments-width="128"
                 displacement-map="#360video"
 		        displacement-bias="0"
-        		displacement-scale="20"
+        		displacement-scale="10"
                 animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 -360 0; loop: true;"></a-sphere>
 
 			</a-marker>
