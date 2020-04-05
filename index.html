@@ -43,7 +43,8 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
 
-        <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; trackingMethod: best; matrixCodeType: 3x3; labelingMode: white_region;' vr-mode-ui="enabled: false"renderer='precision: medium;'>
+        <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; trackingMethod: best; matrixCodeType: 3x3; labelingMode: white_region" vr-mode-ui="enabled: false"
+        renderer='precision: medium;'>
 		    <a-assets>
          		<img id="deathSphere" src="assets/deathSphere.png">
          		<video id="360video" src="assets/360video.MP4" autoplay="true" loop="true">
@@ -63,13 +64,16 @@
 		        ></a-sphere>
 
 		        <a-sphere 
-		        material="src: #360video"
+		        material="src: #360video; transparent: true"
                 myoffset-updater
                 scale="1 1 1"
                 radius="0.2"
                 position="0 0 0.5"
                 segments-height="128"
                 segments-width="128"
+                displacement-map="#360video"
+		        displacement-bias="0"
+        		displacement-scale="20"
                 animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 -360 0; loop: true;"></a-sphere>
 
 			</a-marker>
