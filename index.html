@@ -46,17 +46,17 @@
         <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3; labelingMode: white_region;' renderer='precision: medium;'>
 		    <a-assets>
          		<img id="deathSphere" src="assets/deathSphere.png">
-         		<video id="my-video" src="video.mp4" autoplay="true">
+         		<video id="360video" src="assets/360video.mp4" autoplay="true">
 
         	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 
 		        <a-sphere 
-		        radius: 0.5
+		        radius='0.5'
 		        scale='2 2 2'
-		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
+		        material="src: #360video; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
-		        displacement-map="#deathSphere"
+		        displacement-map="#360video"
 		        displacement-bias="0"
         		displacement-scale="20"
 		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
