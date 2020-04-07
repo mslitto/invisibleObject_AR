@@ -5,8 +5,6 @@
 		<meta charset="UTF-8">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
 	    <title>Im alive</title>
 
 	    <style>
@@ -46,15 +44,13 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
 
-        <a-scene 
-        vr-mode-ui="enabled: false"
-      	embedded
-      	arjs="sourceType: webcam; debugUIEnabled: false;">
+        <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; trackingMethod: best; matrixCodeType: 3x3; labelingMode: white_region" vr-mode-ui="enabled: false"renderer='precision: medium;'>
 		    <a-assets>
          		<img id="deathSphere" src="assets/deathSphere.png">
          		<video id="360video" src="assets/360video.MP4" autoplay="true">
 
         	</a-assets>
+	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
 
 		        <a-sphere 
 		        scale='0.2 0.2 0.2'
@@ -62,26 +58,24 @@
                 segments-width="128"
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
 		        position="0 0 0.5"
-		        gps-entity-place="latitude: 48.185344; longitude: 16.361062399999998;"
-
 		        displacement-map="#deathSphere"
 		        displacement-bias="0"
         		displacement-scale="0.5"
-		        animation="property: rotation; dur: 8000; easing: linear; 
-		        dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
+		        animation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
 		        ></a-sphere>
 
 		        <a-sphere 
 		        material="src: #deathSphere; side: double; depthTest: false; transparent: true"
-				gps-entity-place="latitude: 48.185344; longitude: 16.361062399999998;"		        
-				segments-height="128"
+		        segments-height="128"
                 segments-width="128"
                 scale="1 1 1"
                 radius="0.2"
                 position="0 0 0.5"
                 animation="property: rotation; dur: 10000; easing: linear; dir: normal; from:0 0 0; to: 0 -360 0; loop: true;"></a-sphere>
 
-        	<a-entity gps-camera rotation-reader></a-entity>
+			</a-marker>
+
+        	<a-entity camera></a-entity>
         </a-scene>
 
         <div id="figure"></div>
