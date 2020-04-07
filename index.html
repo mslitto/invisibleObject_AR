@@ -45,16 +45,27 @@
 
         <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; trackingMethod: best; matrixCodeType: 3x3; labelingMode: white_region" vr-mode-ui="enabled: false"renderer='precision: medium;'>
 		    <a-assets>
-         		<img id="deathSphere" src="assets/deathSphere.png">
+         		<img id="l01" src="assets/01_layer.png">
+         		<img id="l02" src="assets/02_layer.png">
+         		<img id="l03" src="assets/03_layer.png.png">
+
         	</a-assets>
 	       
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
+	        	<a-sphere 
+		        scale='0.1 0.1 0.1'
+		        segments-height="128"
+                segments-width="128"
+		        material="src: #l03; side: double; transparent: true"
+		        position="0 0 0.5"
+		        animation__rotation="property: rotation; dur: 8000; easing: linear; dir: normal; from:0 0 0; to: 0 360 0; loop: true;"
+		        ></a-sphere>
 
 		        <a-sphere 
 		        scale='0.2 0.2 0.2'
 		        segments-height="128"
                 segments-width="128"
-		        material="src: #deathSphere; side: double; transparent: true"
+		        material="src: #l03; side: double; transparent: true"
 		        position="0 0 0.5"
 		        displacement-map="#deathSphere"
 		        displacement-bias="0"
@@ -63,7 +74,7 @@
 		        ></a-sphere>
 
 		        <a-sphere 
-		        material="src: #deathSphere; side: double; transparent: true"
+		        material="src: #l02; side: double; transparent: true"
 		        segments-height="128"
                 segments-width="128"
                 scale="0.5 0.5 0.5"
