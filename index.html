@@ -47,7 +47,7 @@
         <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; trackingMethod: best; matrixCodeType: 3x3; labelingMode: white_region" vr-mode-ui="enabled: false"renderer='precision: medium;'>
 		    <a-assets>
          		<img id="deathSphere" src="assets/deathSphere.png">
-         		<video id="360video" src="assets/360video.MP4" autoplay="true" loop="true">
+         		<video id="360video" src="assets/360video.MP4" autoplay="true">
 
         	</a-assets>
 	        <a-marker id='marker_sh' registerevents preset='custom' type='pattern' url='stayhome2.patt'>
@@ -65,7 +65,7 @@
 		        ></a-sphere>
 
 		        <a-sphere 
-		        material="src: #360video"
+		        material="src: #360video; side: double; depthTest: false; transparent: true"
 		        segments-height="128"
                 segments-width="128"
                 scale="1 1 1"
