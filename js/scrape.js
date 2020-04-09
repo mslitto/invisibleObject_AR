@@ -1,88 +1,93 @@
+// scrape Corona csse_covid_19_daily_reports
 
+const splitCsv = b => {
+  // die regular expression schaut, ob ein komma innerhalb eines strings ist, oder nicht,
+  // bevor der string beim komma geteilt wird.
+  const matches = b.match(/(\s*"[^"]+"\s*|\s*[^,]+|,)(?=,|$)/g)
 
-
-//scrape Corona csse_covid_19_daily_reports
-
-const split = b => {
-  const matches = b.match(/(\s*"[^"]+"\s*|\s*[^,]+|,)(?=,|$)/g);
+  // wenn keines der kommas in einem string ist,
+  // dann teilen wir den string einfach beim komma
   if (!matches) {
-    return b.split(',');
+    return b.split(',')
   }
+
+  // wenn ein komma im string ist, dann muessen wir komplex splitten
   for (let n = 0; n < matches.length; ++n) {
-      matches[n] = matches[n].trim();
-      if (matches[n] == ',') matches[n] = '';
+    matches[n] = matches[n].trim()
+    if (matches[n] == ',') {
+      matches[n] = ''
+    }
   }
-  if (b[0] === ',') matches.unshift("");
-  return matches;
+  if (b[0] === ',') {
+    matches.unshift("")
+  }
+
+  return matches
 }
 
-const load = async () => {
+const getResults = async url => {
   const totals = {
-    recovered: 0,
-    deaths: 0,
-    confirmed: 0,
+    yesterday: 0,
+    today: 0,
   }
 
-  try {
-    const date = new Date()
-    let month = date.getMonth() + 1
-    let day = date.getDate() - 2
-    if (day <= 9) {
-      day = `0${day}`
-    }
-    if (month <= 9) {
-      month = `0${month}`
-    }
-    
-    const url = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/${month}-${day}-2020.csv`
-    console.log({url})
-    const response = await fetch(url)
+  const response = await fetch(url)
 
   const body = await response.text()
 
-    body.trim().split('\n').map((line, i) => {
-      if (i === 0) {
-        return
+  body.trim().split('\n').forEach((line, i) => {
+    if (i === 0) {
+      return
+    }
+
+    const parts = splitCsv(line)
+
+    // parts ist hier ein array aus strings
+
+    const [yesterday, today] = parts.map((part, i) => {
+      if (i >= (parts.length - 2)) {
+        return part
       }
-      const [
-        fips,
-        admin2,
-        province,
-        country,
-        timestamp,
-        lat,
-        long,
-        confirmed,
-        deaths,
-        recovered,
-        active,
-        combined,
-      ] = split(line)
+    }).filter(a => a)
 
-      totals.confirmed += parseInt(confirmed, 10)
-      totals.deaths += parseInt(deaths, 10)
-      totals.recovered += parseInt(recovered, 10)
-    })
+    totals.yesterday += parseInt(yesterday)
+    totals.today += parseInt(today)
+  })
 
-  
+  return totals
+}
+
+const load = async () => {
+  try {
+    const confirmedUrl = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv`
+    const deathUrl = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv`
+    const recoveredUrl = `https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recoverd_global.csv`
+
+    const confirmed = await getResults(confirmedUrl)
+    const deaths = await getResults(deathUrl)
+
+    console.log({ confirmed, deaths })
+
+    // hier wird die aframe funktion aufgerufen
+
   } catch(e) {
     document.body.innerHTML = e
   }
-  const defaultValue = -1;
-  const deathRatio = (totals.confirmed / totals.deaths);
-  const deathBattle = ((totals.recovered / totals.confirmed) - (totals.deaths/ totals.confirmed));
-  const sickatHome = (totals.confirmed - totals.deaths - totals.recovered);
-  
-  //scale sphere add EventListener
-  if (deathBattle < defaultValue) {
-      console.log(1);
-  } else {
-      console.log(0);
-  }
-  
+  // const defaultValue = -1
+  // const deathRatio = (totals.confirmed / totals.deaths)
+  // const deathBattle = ((totals.recovered / totals.confirmed) - (totals.deaths/ totals.confirmed))
+  // const sickatHome = (totals.confirmed - totals.deaths - totals.recovered)
 
-  
-  figure.innerHTML = "confirmed " + totals.confirmed + "<br>" + "death " + totals.deaths + "<br>" + "recovered "  + totals.recovered + "<br>" + "sickatHome " + sickatHome +  "<br>" + deathBattle;
+  // //scale sphere add EventListener
+  // if (deathBattle < defaultValue) {
+      // console.log(1)
+  // } else {
+      // console.log(0)
+  // }
+
+  // const figure = document.getElementById('figure')
+
+  // figure.innerHTML = "confirmed " + totals.confirmed + "<br>" + "death " + totals.deaths + "<br>" + "recovered "  + totals.recovered + "<br>" + "sickatHome " + sickatHome +  "<br>" + deathBattle
 }
 
 load()
