@@ -73,8 +73,8 @@ const load = async () => {
 
   // aframe && events
   const s01 = document.querySelector('#sphere_01');
-  const s02 = document.querySelector('#sphere_02');
-  const s03 = document.querySelector('#sphere_03');
+  //const s02 = document.querySelector('#sphere_02');
+  //const s03 = document.querySelector('#sphere_03');
 
   const eventTest = new Event("eventTest");
   eventTest.deaths = deaths;
