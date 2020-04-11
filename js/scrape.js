@@ -65,8 +65,9 @@ const load = async () => {
 
     const confirmed = await getResults(confirmedUrl)
     const deaths = await getResults(deathUrl)
+    const recovered = await getResults(recoveredUrl)
 
-    console.log({ confirmed, deaths })
+    console.log({ confirmed, deaths, recovered })
 
     // hier wird die aframe funktion aufgerufen
 
