@@ -71,6 +71,16 @@ const load = async () => {
 
     // hier wird die aframe funktion aufgerufen
 
+  // aframe && events
+  const s01 = document.querySelector('#sphere_01');
+  const s02 = document.querySelector('#sphere_02');
+  const s03 = document.querySelector('#sphere_03');
+
+  const eventTest = new Event("eventTest");
+  eventTest.deaths = deaths;
+  eventTest.confirmed = confirmed;
+  s01.dispatchEvent(eventTest);
+
   } catch(e) {
     document.body.innerHTML = e
   }
@@ -92,3 +102,9 @@ const load = async () => {
 }
 
 load()
+
+
+
+
+
+
